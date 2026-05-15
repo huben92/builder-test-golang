@@ -19,11 +19,11 @@ func main() {
 
 	// 2. Fallback to 3000 (or any port) for local development
 	if port == "" {
-		port = "3000"
+		port = ":3000"
 	}
 
 	// Start the server on port 5004
-	fmt.Println("Server is running on http://localhost:5004")
+	fmt.Println("Server is running on http://localhost" + port)
 	err := http.ListenAndServe(port, nil)
 	if err != nil {
 		fmt.Printf("Error starting server: %s\n", err)
