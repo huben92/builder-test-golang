@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"net/http"
 	"os"
+	"strings"
 )
 
 func helloHandler(w http.ResponseWriter, r *http.Request) {
@@ -20,6 +21,9 @@ func main() {
 	// 2. Fallback to 3000 (or any port) for local development
 	if port == "" {
 		port = ":3000"
+	}
+	if !strings.HasPrefix(port, ":") {
+		port = ":" + port
 	}
 
 	// Start the server on port 5004
